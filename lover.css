@@ -1,0 +1,39 @@
+@font-face {
+    font-family: "8bit";
+    src: url(Pixelva.ttf);
+}
+
+
+body {
+	background-color: #EEEAE6 ;
+	margin: 12px 20px;
+}
+
+/* body {
+	background-image: url('d1.jpg');
+	background-repeat: no-repeat;
+	max-width: 100;
+	background-position: center;
+	background-size: 1000px;
+	background-position: 0px 0px;
+
+	 
+} */
+
+.term {
+	font-family:'8bit';
+	font-size: 32.5px; 
+	color: #1E2222;
+	background: none;
+}
+
+.termReverse {
+    font-family:'8bit';
+	font-size: 29px;
+	color: #111111;
+	background: #1E2222;
+}
+
+
+
+  

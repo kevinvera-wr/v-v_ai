@@ -1,0 +1,141 @@
+<html lang="en">
+<head>
+	<meta name="viewport" content="user-scalable=no">
+	
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>loverboy</title>
+	<link rel="stylesheet" type="text/css" href="lover.css">
+	<script language="JavaScript" type="text/javascript" src="loverlib.js"></script>
+	<script language="JavaScript" type="text/javascript" src="loverbot.js"></script>
+	<script language="JavaScript" type="text/javascript" src="loverdata2.js"></script>
+	<script language="JavaScript" type="text/javascript" src="loverblock.js"></script>
+
+<script language="JavaScript" type="text/javascript">
+
+
+var conf= {
+	x:40,
+	y:340,
+	termDiv:'lovergDiv',
+	ps: ' ✦ YOU:',
+	historyUnique: true,
+	initHandler: initHandler,
+	exitHandler: termExit,
+	handler: termHandler
+}
+
+var term = new Terminal(conf);
+var lover = new loverbot();
+
+function termOpen() {
+	TermGlobals.keylock=false;
+	if (term.closed) lover.reset();
+	term.open();
+	setTermLink(false);
+}
+
+function setTermLink(v) {
+	var linkobj;
+	if (document.getElementById) {
+		linkobj=document.getElementById('termOpenLink');
+	}
+	else if (document.all) {
+		linkobj=document.all.termOpenLink;
+	}
+	else {
+		linkobj=document.links.termOpenLink;
+	}
+	if (linkobj) linkobj.className = (v)? 'termopen': 'termopenhidden';
+}
+
+function initHandler() {
+	this.write ([ 
+
+'⬥ Welcome to loverboy, here you can anonymously read the deepest ',
+'thoughts / feelings / & experiences of lovers.',
+'-------------------------------------------------------------',
+//'──────────────────────────',
+'',
+'',
+'',
+'▾ PICK A NUMBER:',
+'',
+'[1]   💖 ', 
+'',
+'[2]  🥺 ', 
+' ',
+'[3]  💦 '
+		]);
+	this.type( +loverInitials[Math.floor(Math.random()*loverInitials.length)]);
+	this.prompt();
+}
+
+function termHandler() {
+	var line=this.lineBuffer;
+	// no action on empty line
+	if (line.search(/^\s*$/)==0) {
+		this.prompt();
+		return;
+	}
+	// transform
+	this.write('%n'+lover.transform(line)); // <<<
+	if (lover.quit) {
+		setTimeout('term.close()',2100);
+		return;
+	}
+	this.prompt();
+}
+
+function termExit() {
+	TermGlobals.keylock=true;
+	setTermLink(true);
+}
+
+
+
+</script>
+
+
+</div>
+</div>
+  
+</head>
+<body onload="javascript:termOpen();">
+
+
+
+	 <div id="display">
+
+		<a onfocus="if(this.blur) this.blur();" class="termopen" id="termOpenLink"> 
+			<div id="display" position: absolute;>
+		
+				<body id="body" > </body>
+				<input id="hiddenInput" style="visibility: hidden;">
+				
+				<script>
+				document.getElementById('body').addEventListener('click', function(){
+				var inputElement = document.getElementById('hiddenInput');
+				inputElement.style.visibility = 'visible'; 
+				inputElement.focus();
+				inputElement.style.visibility = 'hidden'; 
+				
+				});
+				
+				</script>
+				
+				
+				
+				</div>
+		</a>
+
+		<div id="lovergDiv" 
+		style="position: absolute;">
+	
+		<div id="display" position: absolute;>
+		
+	
+		</div>
+		</div>
+		
+</body>
+</html>
